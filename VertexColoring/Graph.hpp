@@ -8,13 +8,13 @@
 
 class Graph {
 private:
-    int vertexesAmount;
+    int verticesAmount;
     int edgesAmount;
-    std::list<Vertex*> vertexes;
+    std::list<Vertex*> vertices;
     std::vector<std::pair<int, int>> edges;
     void setEdges(std::vector<std::pair<int, int>> edges);
 public:
-    Graph(std::list<Vertex*> vertexes,
+    Graph(std::list<Vertex*> vertices,
         std::vector<std::pair<int, int>> edges);
     Graph(const Graph& graph);
 
@@ -24,16 +24,16 @@ public:
     
     int getEdgesAmount() { return this->edgesAmount; }
 
-    int getVertexesAmount() { return this->vertexesAmount; }
+    int getVerticesAmount() { return this->verticesAmount; }
 
-    std::list<Vertex*> getVertexes() { return this->vertexes; };
+    std::list<Vertex*> getVertices() { return this->vertices; };
 
     bool colorVertex(Vertex* vertex);
 
     bool existsValidColoring();
 
     friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
-        for (const auto& vertex: graph.vertexes)
+        for (const auto& vertex: graph.vertices)
             os << *vertex << std::endl;
         return os;
     }

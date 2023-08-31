@@ -2,21 +2,21 @@
 
 // Constructors 
 
-Graph::Graph(std::list<Vertex*> vertexes,
+Graph::Graph(std::list<Vertex*> vertices,
     std::vector<std::pair<int, int>> edges): 
-        vertexes(vertexes),
+        vertices(vertices),
         edges(edges),
-        vertexesAmount(vertexes.size()),
+        verticesAmount(vertices.size()),
         edgesAmount(0) {
             this->setEdges(edges);
-            for (const auto& it: vertexes) 
-                vertexesAmount += it->adjacencies.size();           
+            for (const auto& it: vertices) 
+                verticesAmount += it->adjacencies.size();           
 }
 
 Graph::Graph(const Graph& graph) {
-    this->vertexes = graph.vertexes;
+    this->vertices = graph.vertices;
     this->edges = graph.edges;
-    this->vertexesAmount = graph.vertexesAmount; 
+    this->verticesAmount = graph.verticesAmount; 
     this->edgesAmount = graph.edgesAmount;
 }
 
@@ -24,7 +24,7 @@ Graph::Graph() {}
 
 // Destructor
 Graph::~Graph() {
-    for (auto& it: vertexes)
+    for (auto& it: vertices)
         delete it;
 }
 
@@ -36,14 +36,14 @@ void Graph::setEdges(std::vector<std::pair<int, int>> edges) {
         int destiny = start.second;
         Vertex* v1 = nullptr;
         Vertex* v2 = nullptr;
-        for (const auto& it: vertexes) {
+        for (const auto& it: vertices) {
             if (it->identificator == source) {
                 v1 = it;
                 break;
             }
         }
 
-        for (const auto& it: vertexes) {
+        for (const auto& it: vertices) {
             if (it->identificator == destiny) {
                 v2 = it;
                 break;
@@ -58,7 +58,7 @@ void Graph::setEdges(std::vector<std::pair<int, int>> edges) {
 }
 
 bool Graph::existsValidColoring() {
-    for (auto& it: vertexes) {
+    for (auto& it: vertices) {
         if (it->color == ' ') {
             it->color = 'R';
             if (!colorVertex(it))
@@ -83,7 +83,7 @@ bool Graph::colorVertex(Vertex* vertex) {
                 it->color = colorNext;
                 queue.push(it);
             } 
-            // quer dizer que meu graph não possui uma coloração válida
+            
             else if (it->color == temp->color)
                 return false;
         }

@@ -7,10 +7,10 @@
 
 std::vector<Graph*> readGraphs() {
     std::vector<Graph*> graphs;
-    std::list<Vertex*> vertexes;
+    std::list<Vertex*> vertices;
     std::vector<std::pair<int, int>> edges;
     std::string line;
-    int vertexesAmount = 0;
+    int verticesAmount = 0;
     int edgesAmount = 0;
     int source = 0;
     int destiny = 0;
@@ -22,10 +22,10 @@ std::vector<Graph*> readGraphs() {
 
     while (std::getline(file, line)) {
         std::stringstream ss(line);
-        ss >> vertexesAmount >> edgesAmount;
+        ss >> verticesAmount >> edgesAmount;
 
-        for (size_t i = 0; i < vertexesAmount; ++i)
-            vertexes.push_back(new Vertex(i));
+        for (size_t i = 0; i < verticesAmount; ++i)
+            vertices.push_back(new Vertex(i));
 
         while (edges.size() < edgesAmount) {
             std::getline(file, line);
@@ -35,8 +35,8 @@ std::vector<Graph*> readGraphs() {
                 edges.push_back({source, destiny});
         }
         
-        graphs.push_back(new Graph(vertexes, edges));
-        vertexes.clear();
+        graphs.push_back(new Graph(vertices, edges));
+        vertices.clear();
         edges.clear();
     }
     return graphs;
