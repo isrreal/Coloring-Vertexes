@@ -1,4 +1,4 @@
-# Coloring-Vertexes
+# Vertex Coloring
 
 The approach that consists of painting adjacent vertices in a traversal
 in width, assigning valid cores 'R' or 'B'. It is correct because for every
