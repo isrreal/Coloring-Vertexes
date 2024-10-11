@@ -6,11 +6,16 @@
 #include <list>
 #include <utility>
 
+enum COLOR {
+    COLORED = '1',
+    UNCOLORED = ' ' 
+};
+
 struct Vertex {
     int identificator;
     char color;
     std::list<Vertex*> adjacencies;
-    Vertex(int identificator, char color = ' '): identificator(identificator), color(color) {}
+    Vertex(int identificator, char color = UNCOLORED): identificator(identificator), color(color) {}
     ~Vertex() {}
 
     friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
